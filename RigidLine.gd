@@ -37,7 +37,7 @@ func get_line_center(line) -> Vector2:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var line_glob_pos = line.global_position
-	var line_poly = Geometry.offset_polyline_2d(line.points, line.width / 2, Geometry.JOIN_ROUND, Geometry.END_ROUND)
+	var line_poly = Geometry2D.offset_polyline(line.points, line.width / 2, Geometry2D.JOIN_ROUND, Geometry2D.END_ROUND)
 	var line_center = get_line_center(line)
 	global_position += line_center + line.position
 	line.global_position = line_glob_pos
@@ -57,10 +57,10 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_CollisionTimeout_timeout():
 	removeIfCollide = false
-	print("timeout")
 
 
 func _on_RigidBody2D_body_entered(body):
-	print("collide")
+	
 	if removeIfCollide:
+		print("collided before timeout")
 		call_deferred("queue_free")

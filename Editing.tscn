@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b06bi0g0ha0ke"]
+
+[ext_resource type="PackedScene" uid="uid://b6hiogmqth46u" path="res://GumballSpawn.tscn" id="1_2jaov"]
+[ext_resource type="Script" path="res://Editing.gd" id="1_4c6js"]
+[ext_resource type="PackedScene" uid="uid://dxgvsuidc48tj" path="res://Gumball.tscn" id="2_8g0r5"]
+[ext_resource type="PackedScene" path="res://DrawScreen.tscn" id="3_fi81k"]
+[ext_resource type="PackedScene" uid="uid://b1yk5e0x4q2so" path="res://StaticLine.tscn" id="4_t6vej"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(2000, 10)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_4c6js")
+
+[node name="GumballSpawn" parent="." instance=ExtResource("1_2jaov")]
+position = Vector2(241, 196)
+gumballScene = ExtResource("2_8g0r5")
+
+[node name="DrawScreen" parent="." instance=ExtResource("3_fi81k")]
+LineScene = ExtResource("4_t6vej")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(555, 557)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -997.0
+offset_top = -17.0
+offset_right = 1003.0
+offset_bottom = 23.0
+color = Color(0.419608, 0.494118, 0.960784, 1)
+
+[connection signal="beingDragged" from="GumballSpawn" to="DrawScreen" method="_on_gumball_spawn_being_dragged"]
+[connection signal="noDrag" from="GumballSpawn" to="DrawScreen" method="_on_gumball_spawn_no_drag"]

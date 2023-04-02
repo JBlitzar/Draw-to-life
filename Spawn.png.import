@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3q0e37jlgnr7"
-path="res://.godot/imported/gumball.png-e045698a33f0f9da731152b6108370d4.ctex"
+uid="uid://bma7hycfkh4ik"
+path="res://.godot/imported/Spawn.png-a4940df41a0217a0e6c97c1cfbbfe573.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gumball.png"
-dest_files=["res://.godot/imported/gumball.png-e045698a33f0f9da731152b6108370d4.ctex"]
+source_file="res://Spawn.png"
+dest_files=["res://.godot/imported/Spawn.png-a4940df41a0217a0e6c97c1cfbbfe573.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false

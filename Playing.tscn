@@ -12,6 +12,7 @@ size = Vector2(2000, 10)
 
 [node name="GumballSpawn" parent="." instance=ExtResource("1_l6wev")]
 position = Vector2(241, 196)
+editorMode = false
 gumballScene = ExtResource("2_fodow")
 
 [node name="DrawScreen" parent="." instance=ExtResource("3_kxsug")]

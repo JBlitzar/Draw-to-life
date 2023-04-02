@@ -26,16 +26,18 @@ func makeLine():
 	add_child(inst)
 
 func handleClick():
+	
 	if not mouseIsBusy:
-			dragDown = not dragDown
-			print("mouse no busy")
-			if dragDown:
-				currentLine = makeNewLine()
-			elif not dragDown:
-				
-				makeLine()
-				
-				currentLine = null
+	
+		dragDown = not dragDown
+		print("mouse no busy")
+		if dragDown:
+			currentLine = makeNewLine()
+		elif not dragDown:
+			
+			makeLine()
+			
+			currentLine = null
 
 
 
@@ -47,7 +49,7 @@ func _input(event):
 		
 			
 	elif event is InputEventMouseMotion:
-		if dragDown:
+		if dragDown and not mouseIsBusy:
 			currentLine.add_point(event.position)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -55,9 +57,10 @@ func _input(event):
 
 
 func _on_gumball_spawn_being_dragged():
-	print("recieve beingDragged")
 	mouseIsBusy = true
 
+func mouseNoBusy():
+	mouseIsBusy = false
 
 func _on_gumball_spawn_no_drag():
-	mouseIsBusy = false
+	call_deferred("mouseNoBusy")

@@ -12,11 +12,16 @@ var doDrag = false
 @export var editorMode = false
 @export var interval: int = 2
 @export var gumballScene: PackedScene
-signal beingDragged
+
 signal noDrag
+
+
+
+signal my_signal
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer.wait_time = interval
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,7 +32,11 @@ func _ready():
 func _on_Timer_timeout():
 	var inst = gumballScene.instantiate()
 	add_child(inst)
-	
+	emit_signal("my_signal")
+
+
+
+signal beingDragged
 	
 func _input(event):
 	if editorMode:
@@ -39,11 +48,11 @@ func _input(event):
 				if mouseIn:
 					doDrag = true
 					print("emit beingDragged")
-					beingDragged.emit()
+					emit_signal("beingDragged")
 			elif not dragDown:
 				#unclicked out
 				doDrag = false
-				noDrag.emit()
+				emit_signal("noDrag")
 				
 		elif event is InputEventMouseMotion:#mouse moving
 			if dragDown and doDrag:

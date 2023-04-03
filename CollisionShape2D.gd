@@ -5,7 +5,7 @@ extends CollisionShape2D
 # var a = 2
 # var b = "text"
 
-@onready var line = $line
+onready var line = $line
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

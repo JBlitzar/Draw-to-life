@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3jnibln5xabx"]
+[gd_scene load_steps=9 format=3 uid="uid://d3jnibln5xabx"]
 
 [ext_resource type="PackedScene" uid="uid://b6hiogmqth46u" path="res://GumballSpawn.tscn" id="1_l6wev"]
 [ext_resource type="PackedScene" uid="uid://dxgvsuidc48tj" path="res://Gumball.tscn" id="2_fodow"]
-[ext_resource type="PackedScene" path="res://DrawScreen.tscn" id="3_kxsug"]
+[ext_resource type="PackedScene" uid="uid://bbte7gcd1q0a8" path="res://DrawScreen.tscn" id="3_kxsug"]
+[ext_resource type="PackedScene" uid="uid://036l2dqcv1v2" path="res://GumballFinish.tscn" id="3_mmfsp"]
 [ext_resource type="PackedScene" uid="uid://b8l33jik3bclu" path="res://RigidLine.tscn" id="4_vhmmj"]
+[ext_resource type="Script" path="res://LineLoader.gd" id="5_xj4yj"]
+[ext_resource type="PackedScene" uid="uid://b1yk5e0x4q2so" path="res://StaticLine.tscn" id="6_cq3j8"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(2000, 10)
@@ -14,6 +17,13 @@ size = Vector2(2000, 10)
 position = Vector2(241, 196)
 editorMode = false
 gumballScene = ExtResource("2_fodow")
+
+[node name="GumballFinish" parent="." instance=ExtResource("3_mmfsp")]
+position = Vector2(786, 426)
+
+[node name="LineLoader" parent="." instance=ExtResource("3_kxsug")]
+script = ExtResource("5_xj4yj")
+LineScene = ExtResource("6_cq3j8")
 
 [node name="DrawScreen" parent="." instance=ExtResource("3_kxsug")]
 LineScene = ExtResource("4_vhmmj")

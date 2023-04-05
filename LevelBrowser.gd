@@ -1,9 +1,4 @@
 extends Node2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	getById("ec8cf289-8246-41ac-8abd-a3ad51b9f5ff")
 func _make_get_request(url, callback):
 	var request = HTTPRequest.new()
 	add_child(request)
@@ -21,28 +16,32 @@ func _make_get_request(url, callback):
 		
 		
 		)
-
-
-
-
-
-func getById(id):
-	_make_get_request("https://Draw-to-life-backend.jblitzar.repl.co/getlevel/"+str(id), func(body):
-		
+func reload_items():
+	_make_get_request("https://Draw-to-life-backend.jblitzar.repl.co/levels", func(body):
 		
 		print(body.get_string_from_utf8())
 		var json = JSON.parse_string(body.get_string_from_utf8())
 		print(json)
-		$GumballSpawn.position.x = json.start[0]
-		$GumballSpawn.position.y = json.start[1]
-		$GumballFinish.position.x = json.end[0]
-		$GumballFinish.position.y = json.end[1]
-		$LineLoader.loadData(json.lines)
-		$Control/Label.text = json.name
+		for key in json.keys():
+			var label = Label.new()
+			label.text = json[key]+"; ID: "+key
+			$Control/ScrollContainer/VBoxContainer.add_child(label)
+		
+		
 		)
-	
+
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	reload_items()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_reload_pressed():
+	reload_items()

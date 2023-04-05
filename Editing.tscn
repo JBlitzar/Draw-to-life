@@ -45,6 +45,16 @@ color = Color(0.419608, 0.494118, 0.960784, 1)
 
 [node name="Control" type="CanvasLayer" parent="."]
 
+[node name="LineEdit" type="LineEdit" parent="Control"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_right = 157.0
+offset_bottom = 50.0
+grow_horizontal = 2
+placeholder_text = "Your level's name"
+
 [node name="Button" type="Button" parent="Control"]
 anchors_preset = 1
 anchor_left = 1.0

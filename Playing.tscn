@@ -47,3 +47,15 @@ offset_top = -17.0
 offset_right = 1003.0
 offset_bottom = 23.0
 color = Color(0.419608, 0.494118, 0.960784, 1)
+
+[node name="Control" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="Control"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Loading..."

@@ -43,5 +43,5 @@ func _on_button_pressed():#Pressed uplaod button
 	objToSend.start = [$GumballSpawn.position.x, $GumballSpawn.position.y]
 	objToSend.end = [$GumballFinish.position.x, $GumballFinish.position.y]
 	print(objToSend)
-	_make_post_request("http://localhost:3000/upload", objToSend)
+	_make_post_request("https://Draw-to-life-backend.jblitzar.repl.co/upload", objToSend)
 	

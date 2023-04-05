@@ -27,13 +27,16 @@ func _make_get_request(url, callback):
 
 
 func getById(id):
-	_make_get_request("localhost:3000/getlevel?id="+str(id), func(body):
+	_make_get_request("https://Draw-to-life-backend.jblitzar.repl.co/getlevel/"+str(id), func(body):
 		
 		var json = JSON.parse_string(body.get_string_from_utf8())
-		$GumballSpawn.position.x = json.start.x
-		$GumballSpawn.position.y = json.start.y
-		$GumballFinish.position.x = json.end.x
-		$GumballFinish.position.y = json.end.y
+		print(body)
+		print(body.get_string_from_utf8())
+		print(json)
+		$GumballSpawn.position.x = json.start[0]
+		$GumballSpawn.position.y = json.start[1]
+		$GumballFinish.position.x = json.end[0]
+		$GumballFinish.position.y = json.end[1]
 		$LineLoader.loadData(json.lines)
 		)
 	

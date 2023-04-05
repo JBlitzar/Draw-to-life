@@ -38,7 +38,6 @@ func _input(event):
 				#clicked in
 				if mouseIn:
 					doDrag = true
-					print("emit beingDragged")
 					emit_signal("beingDragged")
 			elif not dragDown:
 				#unclicked out

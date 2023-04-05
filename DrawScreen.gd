@@ -29,9 +29,6 @@ func makeLine():
 func handleClick():
 	dragDown = not dragDown
 	if not mouseIsBusy:
-	
-		
-		print("mouse no busy")
 		if dragDown:
 			currentLine = makeNewLine()
 		elif not dragDown:

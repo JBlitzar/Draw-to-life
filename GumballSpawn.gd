@@ -20,7 +20,8 @@ signal noDrag
 signal my_signal
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer.wait_time = interval
+	if interval != -1:
+		$Timer.wait_time = interval
 	
 
 
@@ -30,10 +31,11 @@ func _ready():
 
 
 func _on_Timer_timeout():
-	var inst = gumballScene.instantiate()
-	inst.position = $Area2D.position
-	add_child(inst)
-	emit_signal("my_signal")
+	if interval != -1:
+		var inst = gumballScene.instantiate()
+		inst.position = $Area2D.position
+		add_child(inst)
+		emit_signal("my_signal")
 
 
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3jnibln5xabx"]
+[gd_scene load_steps=10 format=3 uid="uid://d3jnibln5xabx"]
 
 [ext_resource type="PackedScene" uid="uid://b6hiogmqth46u" path="res://GumballSpawn.tscn" id="1_l6wev"]
+[ext_resource type="Script" path="res://Playing.gd" id="1_mgp3s"]
 [ext_resource type="PackedScene" uid="uid://dxgvsuidc48tj" path="res://Gumball.tscn" id="2_fodow"]
 [ext_resource type="PackedScene" uid="uid://bbte7gcd1q0a8" path="res://DrawScreen.tscn" id="3_kxsug"]
 [ext_resource type="PackedScene" uid="uid://036l2dqcv1v2" path="res://GumballFinish.tscn" id="3_mmfsp"]
@@ -12,6 +13,7 @@
 size = Vector2(2000, 10)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_mgp3s")
 
 [node name="GumballSpawn" parent="." instance=ExtResource("1_l6wev")]
 position = Vector2(241, 196)

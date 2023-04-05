@@ -15,6 +15,7 @@ script = ExtResource("1_4c6js")
 
 [node name="GumballSpawn" parent="." instance=ExtResource("1_2jaov")]
 position = Vector2(241, 196)
+interval = -1
 gumballScene = ExtResource("2_8g0r5")
 
 [node name="DrawScreen" parent="." instance=ExtResource("3_fi81k")]
@@ -53,6 +54,8 @@ offset_bottom = 36.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 text = "Upload"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [connection signal="beingDragged" from="GumballSpawn" to="DrawScreen" method="_on_gumball_spawn_being_dragged"]
 [connection signal="noDrag" from="GumballSpawn" to="DrawScreen" method="_on_gumball_spawn_no_drag"]

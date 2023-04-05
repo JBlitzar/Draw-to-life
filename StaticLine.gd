@@ -16,9 +16,6 @@ func _ready():
 		var col = CollisionPolygon2D.new()
 		col.polygon = poly
 		$StaticBody2D.add_child(col)
-		
-		
-		
 		var col2 = CollisionPolygon2D.new()
 		col2.polygon = poly
 		$Area2D.add_child(col2)

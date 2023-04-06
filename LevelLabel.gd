@@ -1,24 +1,11 @@
-extends Label
+extends HBoxContainer
 
-var clickedDown = false
-var mouseIn = false
+signal selected_level(id:String)
+var id: String = ""
+var level_name: String = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	focus_entered.connect(func(): when_focus_entered())
-	focus_exited.connect(func(): when_focus_exited())
+	$Label.text = level_name + " ID: "+id
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-func _input(event):
-	if event is InputEventMouseButton:
-		clickedDown = !clickedDown
-		if clickedDown and mouseIn:
-			print("CLICKED YAYAYAY")
-func when_focus_entered():
-	mouseIn = true
-	print("mousein")
-func when_focus_exited():
-	mouseIn = false
-	print("mouseout")
+func _on_button_pressed():
+	selected_level.emit(name)

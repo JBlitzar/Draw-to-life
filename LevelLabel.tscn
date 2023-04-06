@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://chat3hrbngd1q"]
+
+[ext_resource type="Script" path="res://LevelLabel.gd" id="1_4psyb"]
+
+[node name="LevelLabel" type="HBoxContainer"]
+script = ExtResource("1_4psyb")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "hi"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "Go"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

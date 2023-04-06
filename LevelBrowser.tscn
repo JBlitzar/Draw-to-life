@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://brsfgrnj1rs62"]
 
 [ext_resource type="Script" path="res://LevelBrowser.gd" id="1_7pvnh"]
-[ext_resource type="Script" path="res://LevelLabel.gd" id="2_wxo5u"]
+[ext_resource type="PackedScene" uid="uid://chat3hrbngd1q" path="res://LevelLabel.tscn" id="2_cdl3c"]
 
 [node name="LevelBrowser" type="Node2D"]
 script = ExtResource("1_7pvnh")
+levelLabelScene = ExtResource("2_cdl3c")
 
 [node name="Control" type="CanvasLayer" parent="."]
 
@@ -90,10 +91,5 @@ vertical_scroll_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
-
-[node name="Label" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dfsgagf"
-script = ExtResource("2_wxo5u")
 
 [connection signal="pressed" from="Control/Reload" to="." method="_on_reload_pressed"]

@@ -1,4 +1,5 @@
 extends Node2D
+@export var levelLabelScene: PackedScene
 func _make_get_request(url, callback):
 	var request = HTTPRequest.new()
 	add_child(request)
@@ -23,9 +24,10 @@ func reload_items():
 		var json = JSON.parse_string(body.get_string_from_utf8())
 		print(json)
 		for key in json.keys():
-			var label = Label.new()
-			label.text = json[key]+"; ID: "+key
-			$Control/ScrollContainer/VBoxContainer.add_child(label)
+			var instance = levelLabelScene.instantiate()
+			instance.id = key
+			instance.level_name = json[key]
+			$Control/ScrollContainer/VBoxContainer.add_child(instance)
 		
 		
 		)

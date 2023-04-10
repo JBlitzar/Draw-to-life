@@ -1,6 +1,6 @@
 extends Node2D
 
-
+@export var goBackScene: PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	getById("ec8cf289-8246-41ac-8abd-a3ad51b9f5ff")
@@ -46,3 +46,7 @@ func getById(id):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_backbutton_pressed():
+	get_owner().load_scene(goBackScene, [])

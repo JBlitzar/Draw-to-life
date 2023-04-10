@@ -1,4 +1,5 @@
 extends Node2D
+@export var goScene: PackedScene
 @export var levelLabelScene: PackedScene
 func _make_get_request(url, callback):
 	var request = HTTPRequest.new()
@@ -17,6 +18,8 @@ func _make_get_request(url, callback):
 		
 		
 		)
+func handle_go(id):
+	pass
 func reload_items():
 	_make_get_request("https://Draw-to-life-backend.jblitzar.repl.co/levels", func(body):
 		
@@ -27,6 +30,7 @@ func reload_items():
 			var instance = levelLabelScene.instantiate()
 			instance.id = key
 			instance.level_name = json[key]
+			instance.connect("selected_level", handle_go)
 			$Control/ScrollContainer/VBoxContainer.add_child(instance)
 		
 		

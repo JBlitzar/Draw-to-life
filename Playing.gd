@@ -49,4 +49,6 @@ func _process(delta):
 
 
 func _on_backbutton_pressed():
-	get_owner().load_scene(goBackScene, [])
+	var args = {}
+	args["optional"] = "something"
+	

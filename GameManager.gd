@@ -1,15 +1,14 @@
 extends Node
 
-@export var level_browser: PackedScene
-@export var playing_scene: PackedScene
-@export var editing_scene: PackedScene
 
 
-func load_scene(scene: PackedScene,message: Array):
-	remove_child(get_child(0))
-	var inst = scene.instantiate()
-	add_child(inst)
-	if message != []:
-		inst.call(message[0], message[1])
-func _ready():
-	load_scene(level_browser, [])
+func _on_game_level_mode_switch_game_mode(target):
+	pass # Replace with function body.
+
+
+func _on_editor_mode_switch_game_mode(target):
+	pass # Replace with function body.
+
+
+func _on_start_menu_mode_switch_game_mode(target):
+	pass # Replace with function body.

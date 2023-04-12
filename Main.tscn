@@ -1,12 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmnlg6wm6orr"]
+[gd_scene load_steps=8 format=3 uid="uid://cmnlg6wm6orr"]
 
 [ext_resource type="Script" path="res://GameManager.gd" id="1_81ifn"]
+[ext_resource type="Script" path="res://EditorMode.gd" id="2_2kvq1"]
+[ext_resource type="Script" path="res://GameLevelMode.gd" id="2_86wt3"]
+[ext_resource type="Script" path="res://StartMenuMode.gd" id="2_eidvi"]
 [ext_resource type="PackedScene" uid="uid://d3jnibln5xabx" path="res://Playing.tscn" id="2_rnasr"]
 [ext_resource type="PackedScene" uid="uid://brsfgrnj1rs62" path="res://LevelBrowser.tscn" id="3_akfue"]
 [ext_resource type="PackedScene" uid="uid://b06bi0g0ha0ke" path="res://Editing.tscn" id="4_55edl"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_81ifn")
-level_browser = ExtResource("3_akfue")
-playing_scene = ExtResource("2_rnasr")
-editing_scene = ExtResource("4_55edl")
+
+[node name="GameLevelMode" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_86wt3")
+rootScene = ExtResource("2_rnasr")
+
+[node name="EditorMode" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_2kvq1")
+rootScene = ExtResource("4_55edl")
+
+[node name="StartMenuMode" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_eidvi")
+rootScene = ExtResource("3_akfue")
+
+[connection signal="switch_game_mode" from="GameLevelMode" to="." method="_on_game_level_mode_switch_game_mode"]
+[connection signal="switch_game_mode" from="EditorMode" to="." method="_on_editor_mode_switch_game_mode"]
+[connection signal="switch_game_mode" from="StartMenuMode" to="." method="_on_start_menu_mode_switch_game_mode"]

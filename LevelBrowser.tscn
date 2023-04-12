@@ -1,12 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://brsfgrnj1rs62"]
+[gd_scene load_steps=3 format=3 uid="uid://brsfgrnj1rs62"]
 
 [ext_resource type="Script" path="res://LevelBrowser.gd" id="1_7pvnh"]
-[ext_resource type="PackedScene" uid="uid://d3jnibln5xabx" path="res://Playing.tscn" id="2_2tdqg"]
 [ext_resource type="PackedScene" uid="uid://chat3hrbngd1q" path="res://LevelLabel.tscn" id="2_cdl3c"]
 
 [node name="LevelBrowser" type="Node2D"]
 script = ExtResource("1_7pvnh")
-goScene = ExtResource("2_2tdqg")
 levelLabelScene = ExtResource("2_cdl3c")
 
 [node name="Control" type="CanvasLayer" parent="."]

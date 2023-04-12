@@ -1,11 +1,6 @@
 extends GameMode
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func load_root_scene(data: Dictionary={}):
+	var inst = rootScene.instantiate()
+	inst.loadFromJSON(data)
+	add_child(inst)

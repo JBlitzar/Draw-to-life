@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b06bi0g0ha0ke"]
+[gd_scene load_steps=9 format=3 uid="uid://b06bi0g0ha0ke"]
 
 [ext_resource type="PackedScene" uid="uid://b6hiogmqth46u" path="res://GumballSpawn.tscn" id="1_2jaov"]
 [ext_resource type="Script" path="res://Editing.gd" id="1_4c6js"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bbte7gcd1q0a8" path="res://DrawScreen.tscn" id="3_fi81k"]
 [ext_resource type="PackedScene" uid="uid://b1yk5e0x4q2so" path="res://StaticLine.tscn" id="4_t6vej"]
 [ext_resource type="PackedScene" uid="uid://036l2dqcv1v2" path="res://GumballFinish.tscn" id="6_08r20"]
+[ext_resource type="Script" path="res://LineLoader.gd" id="7_ijaxq"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(2000, 10)
@@ -65,10 +66,33 @@ grow_horizontal = 0
 size_flags_horizontal = 8
 text = "Upload"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Reset" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Reset"
+
+[node name="Play" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="ToLevelBrowse" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Back to level browser"
+
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="LineLoader" parent="." instance=ExtResource("3_fi81k")]
+script = ExtResource("7_ijaxq")
+LineScene = ExtResource("4_t6vej")
 
 [connection signal="beingDragged" from="GumballSpawn" to="DrawScreen" method="_on_gumball_spawn_being_dragged"]
 [connection signal="noDrag" from="GumballSpawn" to="DrawScreen" method="_on_gumball_spawn_no_drag"]
 [connection signal="beingDragged" from="GumballFinish" to="DrawScreen" method="_on_gumball_finish_being_dragged"]
 [connection signal="noDrag" from="GumballFinish" to="DrawScreen" method="_on_gumball_finish_no_drag"]
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/ToLevelBrowse" to="." method="_on_to_level_browse_pressed"]

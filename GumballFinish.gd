@@ -25,6 +25,10 @@ signal my_signal
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func actual_position():
+	return $Area2D.global_position
+
+
 
 
 signal beingDragged

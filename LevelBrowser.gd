@@ -1,5 +1,5 @@
 extends Node2D
-@export var goScene: PackedScene
+
 @export var levelLabelScene: PackedScene
 func _make_get_request(url, callback):
 	var request = HTTPRequest.new()
@@ -51,3 +51,7 @@ func _process(delta):
 
 func _on_reload_pressed():
 	reload_items()
+
+
+func _on_editor_pressed():
+	get_parent().change_game_mode("EditorMode")

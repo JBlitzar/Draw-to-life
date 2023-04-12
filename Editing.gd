@@ -5,7 +5,13 @@ extends Node2D
 func _ready():
 	pass # Replace with function body.
 
-
+func loadFromJSON(json):
+	$GumballSpawn.position.x = json.start[0]
+	$GumballSpawn.position.y = json.start[1]
+	$GumballFinish.position.x = json.end[0]
+	$GumballFinish.position.y = json.end[1]
+	$LineLoader.loadData(json.lines)
+	$Control/LineEdit.text = json.name
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -40,9 +46,56 @@ func _on_button_pressed():#Pressed uplaod button
 			childPoints.append(linePoints)
 	var objToSend = {}
 	objToSend.lines = childPoints
-	objToSend.start = [$GumballSpawn.position.x, $GumballSpawn.position.y]
-	objToSend.end = [$GumballFinish.position.x, $GumballFinish.position.y]
+	objToSend.start = [$GumballSpawn.actual_position().x, $GumballSpawn.actual_position().y]
+	objToSend.end = [$GumballFinish.actual_position().x, $GumballFinish.actual_position().y]
 	objToSend.name = $Control/LineEdit.text
 	print(objToSend)
 	_make_post_request("https://Draw-to-life-backend.jblitzar.repl.co/upload", objToSend)
+	get_parent().change_game_mode("StartMenuMode", {"PersistantObj":objToSend})
 	
+
+
+func _on_reset_pressed():
+	$LineLoader.resetLines()
+	$DrawScreen.resetLines()
+
+
+func _on_play_pressed():
+	var children = $DrawScreen.get_children()
+	var childPoints = []
+	
+	for child in children:
+		#print(child.points)
+		#print(Array(child.points))
+		var linePoints = []
+		for point in Array(child.points):
+			linePoints.append([point.x, point.y])
+		if linePoints != []:
+			childPoints.append(linePoints)
+	var objToSend = {}
+	objToSend.lines = childPoints
+	objToSend.start = [$GumballSpawn.actual_position().x, $GumballSpawn.actual_position().y]
+	objToSend.end = [$GumballFinish.actual_position().x, $GumballFinish.actual_position().y]
+	objToSend.name = $Control/LineEdit.text
+	print(objToSend)
+	get_parent().change_game_mode("GameLevelMode", {"PersistantObj":objToSend})
+
+
+func _on_to_level_browse_pressed():
+	var children = $DrawScreen.get_children()
+	var childPoints = []
+	
+	for child in children:
+		#print(child.points)
+		#print(Array(child.points))
+		var linePoints = []
+		for point in Array(child.points):
+			linePoints.append([point.x, point.y])
+		if linePoints != []:
+			childPoints.append(linePoints)
+	var objToSend = {}
+	objToSend.lines = childPoints
+	objToSend.start = [$GumballSpawn.actual_position().x, $GumballSpawn.actual_position().y]
+	objToSend.end = [$GumballFinish.actual_position().x, $GumballFinish.actual_position().y]
+	objToSend.name = $Control/LineEdit.text
+	get_parent().change_game_mode("StartMenuMode", {"PersistantObj":objToSend})

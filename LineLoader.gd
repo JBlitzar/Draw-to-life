@@ -17,6 +17,10 @@ func loadData(lineData):
 		remove_child(line)
 		instance.line = line
 		add_child(instance)
+func resetLines():
+	var children = get_children()
+	for child in children:
+		child.queue_free()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

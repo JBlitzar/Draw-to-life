@@ -1,15 +1,15 @@
 extends GameMode
 
+var PersistantObj = {}
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func load_root_scene():
+	var inst = rootScene.instantiate()
+	add_child(inst)
+	if PersistantObj != {}:
+		inst.loadFromJSON(PersistantObj)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func deload_root_scene(args={}):
-	#special code
-	super().deload_root_scene()
+func change_game_mode(mode: String, args={}):
+	if args.has("PersistantObj"):
+		PersistantObj = args["PersistantObj"]
+	emit_signal("switch_game_mode", mode)

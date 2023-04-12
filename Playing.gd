@@ -3,7 +3,16 @@ extends Node2D
 @export var goBackScene: PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	getById("ec8cf289-8246-41ac-8abd-a3ad51b9f5ff")
+	pass
+	#getById("ec8cf289-8246-41ac-8abd-a3ad51b9f5ff")
+func loadFromJSON(json):
+	print(json)
+	$GumballSpawn.position.x = json.start[0]
+	$GumballSpawn.position.y = json.start[1]
+	$GumballFinish.position.x = json.end[0]
+	$GumballFinish.position.y = json.end[1]
+	$LineLoader.loadData(json.lines)
+	$Control/Label.text = json.name
 func _make_get_request(url, callback):
 	var request = HTTPRequest.new()
 	add_child(request)
@@ -49,6 +58,5 @@ func _process(delta):
 
 
 func _on_backbutton_pressed():
-	var args = {}
-	args["optional"] = "something"
+	get_parent().change_game_mode("StartMenuMode")
 	

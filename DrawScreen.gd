@@ -69,3 +69,7 @@ func _on_gumball_finish_being_dragged():
 
 func _on_gumball_finish_no_drag():
 	mouseIsBusy = false
+func resetLines():
+	var children = get_children()
+	for child in children:
+		child.queue_free()

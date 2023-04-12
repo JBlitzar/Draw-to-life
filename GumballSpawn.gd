@@ -15,7 +15,8 @@ var doDrag = false
 
 signal noDrag
 
-
+func actual_position():
+	return $Area2D.global_position
 
 signal my_signal
 # Called when the node enters the scene tree for the first time.

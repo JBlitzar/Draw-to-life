@@ -19,8 +19,11 @@ func _make_get_request(url, callback):
 		
 		)
 func handle_go(id):
-	pass
+	print(id)
+	get_parent().change_game_mode("GameLevelMode", {"id":id})
 func reload_items():
+	for child in $Control/ScrollContainer/VBoxContainer.get_children():
+		child.call_deferred("queue_free")
 	_make_get_request("https://Draw-to-life-backend.jblitzar.repl.co/levels", func(body):
 		
 		print(body.get_string_from_utf8())

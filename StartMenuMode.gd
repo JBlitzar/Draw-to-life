@@ -1,11 +1,6 @@
 extends GameMode
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+var persistID = ""
+func change_game_mode(mode: String, args: Dictionary={}):
+	if args.has("id"):
+		persistID = args.id
+	emit_signal("switch_game_mode", mode)

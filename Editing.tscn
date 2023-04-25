@@ -56,7 +56,7 @@ offset_bottom = 50.0
 grow_horizontal = 2
 placeholder_text = "Your level's name"
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Upload" type="Button" parent="Control"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -92,7 +92,7 @@ LineScene = ExtResource("4_t6vej")
 [connection signal="noDrag" from="GumballSpawn" to="DrawScreen" method="_on_gumball_spawn_no_drag"]
 [connection signal="beingDragged" from="GumballFinish" to="DrawScreen" method="_on_gumball_finish_being_dragged"]
 [connection signal="noDrag" from="GumballFinish" to="DrawScreen" method="_on_gumball_finish_no_drag"]
-[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Upload" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/Reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer/ToLevelBrowse" to="." method="_on_to_level_browse_pressed"]

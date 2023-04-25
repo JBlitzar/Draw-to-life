@@ -22,7 +22,11 @@ func _on_editor_mode_switch_game_mode(target):
 func _on_start_menu_mode_switch_game_mode(target):
 	$StartMenuMode.deload_root_scene()
 	if target == "GameLevelMode":
+		
 		$GameLevelMode.load_root_scene()
+		print($StartMenuMode.persistID)
+		print("id^^^")
+		$GameLevelMode.get_child(0).getById($StartMenuMode.persistID)
 	elif target == "EditorMode":
 		$EditorMode.load_root_scene()
 	

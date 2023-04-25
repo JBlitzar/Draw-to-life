@@ -8,4 +8,4 @@ func _ready():
 	$Label.text = level_name + " ID: "+id
 
 func _on_button_pressed():
-	selected_level.emit(name)
+	selected_level.emit(id)

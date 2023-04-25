@@ -36,12 +36,15 @@ func _make_get_request(url, callback):
 
 
 func getById(id):
+	print(id)
+	print("getbyid^^^")
 	_make_get_request("https://Draw-to-life-backend.jblitzar.repl.co/getlevel/"+str(id), func(body):
 		
 		
 		print(body.get_string_from_utf8())
 		var json = JSON.parse_string(body.get_string_from_utf8())
 		print(json)
+		print("jason^^^")
 		$GumballSpawn.position.x = json.start[0]
 		$GumballSpawn.position.y = json.start[1]
 		$GumballFinish.position.x = json.end[0]
